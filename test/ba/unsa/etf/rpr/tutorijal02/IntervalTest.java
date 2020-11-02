@@ -1,29 +1,29 @@
 package ba.unsa.etf.rpr.tutorijal02;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class IntervalTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void ctorExceptionTest() {
         assertThrows(IllegalArgumentException.class, () -> {
             Interval i = new Interval(2.5, 2.4, true, true);
         });
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void toStringTest() {
         Interval i = new Interval(1.1, 2.5, true, false);
         assertEquals("[1.1,2.5)", i.toString());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isIn() {
         Interval i = new Interval(1.1, 2.5, true, false);
         assertTrue(i.isIn(2.3));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isIn2() {
         Interval i = new Interval(1.1, 2.5, true, false);
         assertTrue(i.isIn(1.1));
