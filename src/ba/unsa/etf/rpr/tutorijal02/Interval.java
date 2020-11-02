@@ -18,6 +18,12 @@ boolean pocetnapripada, krajnjapripada;
         pocetnapripada = false;
         krajnjapripada = false;
     }
+    public String toString(){
+        if(this.pocetnapripada == true && this.krajnjapripada == true) return ("[" + this.pocetna + "," + this.krajnja + "]");
+        if(this.pocetnapripada == true && this.krajnjapripada == false) return ("[" + this.pocetna + "," + this.krajnja + ")");
+        if(this.pocetnapripada == false && this.krajnjapripada == true) return ("(" + this.pocetna + "," + this.krajnja + "]");
+        return ("(" + this.pocetna + "." + this.krajnja + ")");
+    }
 
     boolean isNull(){
         if(this.pocetna == 0 && this.krajnja == 0 && !this.pocetnapripada && !this.krajnjapripada) return true;
