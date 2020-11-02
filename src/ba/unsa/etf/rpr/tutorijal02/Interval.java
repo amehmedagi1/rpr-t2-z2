@@ -93,6 +93,6 @@ boolean pocetnapripada, krajnjapripada;
     }
 
     public boolean equals(Interval i){
-        return this.pocetna == i.pocetna && this.krajnja == i.krajnja && this.pocetnapripada == i.pocetnapripada && this.krajnjapripada == i.krajnjapripada;
+        return (this.pocetna == i.pocetna) && (this.krajnja == i.krajnja) && (this.pocetnapripada == i.pocetnapripada) && (this.krajnjapripada == i.krajnjapripada);
     }
 }
