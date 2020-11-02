@@ -22,7 +22,7 @@ boolean pocetnapripada, krajnjapripada;
         if(this.pocetna==0 && this.krajnja==0 && !this.pocetnapripada && !this.krajnjapripada) return ("()");
         if(this.pocetnapripada && this.krajnjapripada) return ("[" + this.pocetna + "," + this.krajnja + "]");
         if(this.pocetnapripada) return ("[" + this.pocetna + "," + this.krajnja + ")");
-        if(!this.pocetnapripada && this.krajnjapripada) return ("(" + this.pocetna + "," + this.krajnja + "]");
+        if(this.krajnjapripada) return ("(" + this.pocetna + "," + this.krajnja + "]");
         return ("(" + this.pocetna + "," + this.krajnja + ")");
     }
 
