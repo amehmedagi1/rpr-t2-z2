@@ -35,17 +35,59 @@ boolean pocetnapripada, krajnjapripada;
         return false;
     }
 
-    public Interval intersect(Interval i){
-        if(i.pocetna >= this.pocetna && i.krajnja <= this.krajnja) return new Interval(i.pocetna,i.krajnja,true, true);
-        else if(i.pocetna >= this.pocetna && i.krajnja > this.krajnja) return new Interval(i.pocetna,this.krajnja,true, true);
-        else if(i.pocetna <= this.pocetna && i.krajnja <= this.krajnja) return new Interval(this.pocetna,i.krajnja,true, true);
-        return new Interval(this.pocetna,this.krajnja,true, true);
+    public Interval intersect(Interval i) {
+        if ((i.pocetna > this.pocetna) && (i.krajnja < this.krajnja) && (i.pocetnapripada && i.krajnjapripada))
+            return new Interval(i.pocetna, i.krajnja, true, true);
+        if ((i.pocetna > this.pocetna) && (i.krajnja < this.krajnja) && (!i.pocetnapripada && !i.krajnjapripada))
+            return new Interval(i.pocetna, i.krajnja, false, false);
+        if (i.pocetna > this.pocetna && i.krajnja < this.krajnja && !i.pocetnapripada && i.krajnjapripada)
+            return new Interval(i.pocetna, i.krajnja, false, true);
+        if (i.pocetna > this.pocetna && i.krajnja < this.krajnja && i.pocetnapripada && !i.krajnjapripada)
+            return new Interval(i.pocetna, i.krajnja, true, true);
+        if (i.pocetna > this.pocetna && i.krajnja > this.krajnja && i.pocetnapripada && this.krajnjapripada)
+            return new Interval(i.pocetna, this.krajnja, true, true);
+        if (i.pocetna > this.pocetna && i.krajnja > this.krajnja && !i.pocetnapripada && !this.krajnjapripada)
+            return new Interval(i.pocetna, this.krajnja, false, false);
+        if (i.pocetna > this.pocetna && i.krajnja > this.krajnja && !i.pocetnapripada && this.krajnjapripada)
+            return new Interval(i.pocetna, this.krajnja, false, true);
+        if (i.pocetna > this.pocetna && i.krajnja > this.krajnja && i.pocetnapripada && !this.krajnjapripada)
+            return new Interval(i.pocetna, this.krajnja, true, false);
+        if (i.pocetna < this.pocetna && i.krajnja < this.krajnja && this.pocetnapripada && i.krajnjapripada)
+            return new Interval(this.pocetna, i.krajnja, true, true);
+        if (i.pocetna < this.pocetna && i.krajnja < this.krajnja && !this.pocetnapripada && !i.krajnjapripada)
+            return new Interval(this.pocetna, i.krajnja, false, false);
+        if (i.pocetna < this.pocetna && i.krajnja < this.krajnja && !this.pocetnapripada && i.krajnjapripada)
+            return new Interval(this.pocetna, i.krajnja, false, true);
+        if (i.pocetna < this.pocetna && i.krajnja < this.krajnja && this.pocetnapripada && !i.krajnjapripada)
+            return new Interval(this.pocetna, i.krajnja, true, false);
+        return this;
     }
 
-    public static Interval intersect(Interval j, Interval i){
-        if(i.pocetna >= j.pocetna && i.krajnja <= j.krajnja) return new Interval(i.pocetna,i.krajnja,true, true);
-        else if(i.pocetna >= j.pocetna && i.krajnja > j.krajnja) return new Interval(i.pocetna,j.krajnja,true, true);
-        else if(i.pocetna <= j.pocetna && i.krajnja <= j.krajnja) return new Interval(j.pocetna,i.krajnja,true, true);
-        return new Interval(j.pocetna,j.krajnja,true, true);
+    public static Interval intersect(Interval j, Interval i) {
+        if ((i.pocetna > j.pocetna) && (i.krajnja < j.krajnja) && (i.pocetnapripada && i.krajnjapripada))
+            return new Interval(i.pocetna, i.krajnja, true, true);
+        if ((i.pocetna > j.pocetna) && (i.krajnja < j.krajnja) && (!i.pocetnapripada && !i.krajnjapripada))
+            return new Interval(i.pocetna, i.krajnja, false, false);
+        if (i.pocetna > j.pocetna && i.krajnja < j.krajnja && !i.pocetnapripada && i.krajnjapripada)
+            return new Interval(i.pocetna, i.krajnja, false, true);
+        if (i.pocetna > j.pocetna && i.krajnja < j.krajnja && i.pocetnapripada && !i.krajnjapripada)
+            return new Interval(i.pocetna, i.krajnja, true, true);
+        if (i.pocetna > j.pocetna && i.krajnja > j.krajnja && i.pocetnapripada && j.krajnjapripada)
+            return new Interval(i.pocetna, j.krajnja, true, true);
+        if (i.pocetna > j.pocetna && i.krajnja > j.krajnja && !i.pocetnapripada && !j.krajnjapripada)
+            return new Interval(i.pocetna, j.krajnja, false, false);
+        if (i.pocetna > j.pocetna && i.krajnja > j.krajnja && !i.pocetnapripada && j.krajnjapripada)
+            return new Interval(i.pocetna, j.krajnja, false, true);
+        if (i.pocetna > j.pocetna && i.krajnja > j.krajnja && i.pocetnapripada && !j.krajnjapripada)
+            return new Interval(i.pocetna, j.krajnja, true, false);
+        if (i.pocetna < j.pocetna && i.krajnja < j.krajnja && j.pocetnapripada && i.krajnjapripada)
+            return new Interval(j.pocetna, i.krajnja, true, true);
+        if (i.pocetna < j.pocetna && i.krajnja < j.krajnja && !j.pocetnapripada && !i.krajnjapripada)
+            return new Interval(j.pocetna, i.krajnja, false, false);
+        if (i.pocetna < j.pocetna && i.krajnja < j.krajnja && !j.pocetnapripada && i.krajnjapripada)
+            return new Interval(j.pocetna, i.krajnja, false, true);
+        if (i.pocetna < j.pocetna && i.krajnja < j.krajnja && j.pocetnapripada && !i.krajnjapripada)
+            return new Interval(j.pocetna, i.krajnja, true, false);
+        return j;
     }
 }
