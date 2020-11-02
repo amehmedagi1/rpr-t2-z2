@@ -19,23 +19,21 @@ boolean pocetnapripada, krajnjapripada;
         krajnjapripada = false;
     }
     public String toString(){
-        if(this.pocetna==0 && this.krajnja==0 && this.pocetnapripada==false && this.krajnjapripada== false) return ("()");
-        if(this.pocetnapripada == true && this.krajnjapripada == true) return ("[" + this.pocetna + "," + this.krajnja + "]");
-        if(this.pocetnapripada == true && this.krajnjapripada == false) return ("[" + this.pocetna + "," + this.krajnja + ")");
-        if(this.pocetnapripada == false && this.krajnjapripada == true) return ("(" + this.pocetna + "," + this.krajnja + "]");
+        if(this.pocetna==0 && this.krajnja==0 && !this.pocetnapripada && !this.krajnjapripada) return ("()");
+        if(this.pocetnapripada && this.krajnjapripada) return ("[" + this.pocetna + "," + this.krajnja + "]");
+        if(this.pocetnapripada) return ("[" + this.pocetna + "," + this.krajnja + ")");
+        if(!this.pocetnapripada && this.krajnjapripada) return ("(" + this.pocetna + "," + this.krajnja + "]");
         return ("(" + this.pocetna + "," + this.krajnja + ")");
     }
 
     boolean isNull(){
-        if(this.pocetna == 0 && this.krajnja == 0 && !this.pocetnapripada && !this.krajnjapripada) return true;
-        return false;
+        return this.pocetna == 0 && this.krajnja == 0 && !this.pocetnapripada && !this.krajnjapripada;
     }
 
     boolean isIn(double tacka){
         if(tacka > this.pocetna && tacka < this.krajnja) return true;
         if(tacka == this.pocetna && this.pocetnapripada) return true;
-        if(tacka == this.krajnja && this.krajnjapripada) return true;
-        return false;
+        return tacka == this.krajnja && this.krajnjapripada;
     }
 
     public Interval intersect(Interval i) {
@@ -95,7 +93,6 @@ boolean pocetnapripada, krajnjapripada;
     }
 
     public boolean equals(Interval i){
-        if(this.pocetna == i.pocetna && this.krajnja == i.krajnja && this.pocetnapripada == i.pocetnapripada && this.krajnjapripada == i.krajnjapripada) return true;
-        return false;
+        return this.pocetna == i.pocetna && this.krajnja == i.krajnja && this.pocetnapripada == i.pocetnapripada && this.krajnjapripada == i.krajnjapripada;
     }
 }
